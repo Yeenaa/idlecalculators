@@ -1,16 +1,9 @@
-<script type="text/javascript">
-function get_c() {
-var eingabe = document.exmplform.eingabe.value;
-var a = eingabe * 21;
-var b = eingabe * 85;
-var c = eingabe * a +b * 585;
-document.getElementById('ergebnis').innerHTML = c; 
-}
-</script>
+public class JavaRechnen{
+public static void main (String [] args) {
+int x= 1_500;
+double y= -35.02;
 
-<form name="exmplform">
-<input type="text" name="eingabe">
-<input type="button" value="Berechnen" onclick="get_c()">
-</form>
-<div id="ergebnis">
-</div>
+
+System.out.println("Das Ergebnis ist: "+(x-y));//Mit dem Minuszeichen kannst du auch Werte subtrahieren.
+}
+}
