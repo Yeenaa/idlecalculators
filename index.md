@@ -26,7 +26,7 @@ if (isset($_POST['eingabe'])) {
     <body>
     <form method="post" action="">
         <p><input type="text" name="eingabe" />
-        <input type="submit" value="Berechnen" /></p>
+        <input type="submit" value="Berechnen2" /></p>
     </form>
 
     <?php if ($c !== null) : ?>
