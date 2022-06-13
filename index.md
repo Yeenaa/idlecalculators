@@ -1,16 +1,38 @@
-<script type="text/javascript">
-function get_c() {
-var eingabe = document.exmplform.eingabe.value;
-var a = eingabe * 21;
-var b = eingabe * 85;
-var c = eingabe * a +b * 585;
-document.getElementById('ergebnis').innerHTML = c; 
-}
-</script>
+<?php
 
-<form name="exmplform">
-<input type="text" name="eingabe">
-<input type="button" value="Berechnen" onclick="get_c()">
-</form>
-<div id="ergebnis">
-</div>
+function get_c($eingabe)
+{
+    $a = $eingabe * 21;
+    $b = $eingabe * 85;
+    $c = $eingabe * $a + $b * 585;
+
+    return $c;
+}
+
+$c = null;
+if (isset($_POST['eingabe'])) {
+    $c = get_c($_POST['eingabe']);
+}
+
+?><!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8" />
+        <title>Rechner</title>
+    </head>
+
+    <body>
+    <form method="post" action="">
+        <p><input type="text" name="eingabe" />
+        <input type="submit" value="Berechnen" /></p>
+    </form>
+
+    <?php if ($c !== null) : ?>
+        <div id="ergebnis"><?php echo $c; ?></div>
+    <?php endif; ?>
+        
+    </body>
+
+</html>
