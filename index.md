@@ -1,38 +1,55 @@
-<?php
-
-function get_c($eingabe)
-{
-    $a = $eingabe * 21;
-    $b = $eingabe * 85;
-    $c = $eingabe * $a + $b * 585;
-
-    return $c;
+<html>
+<head>
+<script type="text/javascript">
+function get_online(form) {
+var inputhours = form.inputhours.value;
+var inputminutes = form.inputminutes.value;
+var inputcleartime = form.inputcleartime.value;
+var inputstagedrop = form.inputstagedrop.value;
+var hrminutes = inputhours * 60;
+var totalmin = inputminutes + hrminutes;
+var totalcleartime = inputcleartime + 5;
+var clearsperminute = 60 / totalcleartime;
+var droplowstage = 235 / 10000;
+var gainslowstage = (totalmin * clearsperminute) * (droplowstage * (inputstagedrop / 100));
+var drophighstage = 26 / 1000;
+var gainshighstage = (totalmin * clearsperminute) * (drophighstage * (inputstagedrop / 100));
+var onlinegains_txt = "Your online Chest gains per hour are " + gainslowstage;
+var onlinegains2_txt = "Your online Chest gains per hour are " + gainshighstage;
+document.getElementById('calculationresult').innerHTML = onlinegains_txt + "<br>" + onlinegains2_txt; 
 }
+</script>
+</head>
+<body>
 
-$c = null;
-if (isset($_POST['eingabe'])) {
-    $c = get_c($_POST['eingabe']);
-}
 
-?><!DOCTYPE html>
 
-<html lang="en">
+<form name="online_calc">
+    <label>Hours:</label>
+	<br>
+    <input type="text" name="inputhours">
+	<br>
+    <label>Minutes:</label>
+	<br>
+    <input type="text" name="inputminutes">
+	<br>
+    <label>Cleartime</label>
+	<br>
+    <label>(please only put pure stage clear time in here, do not count transition time!):</label>
+	<br>
+    <input type="text" name="inputcleartime">
+    <br>
+	<label>Stage Drop %</label>
+	<br>
+    <label>(you can find this in your character's stats window):</label>
+    <br>
+	<input type="text" name="inputstagedrop">
+	<br>
+    <input type="button" value="Calculate" onclick="get_online(this.form)">
+</form>
 
-    <head>
-        <meta charset="utf-8" />
-        <title>Rechner</title>
-    </head>
 
-    <body>
-    <form method="post" action="">
-        <p><input type="text" name="eingabe" />
-        <input type="submit" value="Berechnen2" /></p>
-    </form>
-
-    <?php if ($c !== null) : ?>
-        <div id="ergebnis"><?php echo $c; ?></div>
-    <?php endif; ?>
-        
-    </body>
-
+<div id="calculationresult">
+</div>
+</body>
 </html>
