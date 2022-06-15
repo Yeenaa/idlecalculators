@@ -1,0 +1,99 @@
+<html>
+<head>
+<script type="text/javascript">
+function get_online(form) {
+var inputhours = Number(form.inputhours.value);
+var inputminutes = Number(form.inputminutes.value);
+var inputcleartime = Number(form.inputcleartime.value);
+var inputstagedrop = Number(form.inputstagedrop.value);
+var hrminutes = Number(0);
+var totalmin = Number(0);
+var totalcleartime = Number(0);
+var clearsperminute = Number(0);
+var clearsperminuteoffline = Number(0);
+var droplowstage = Number(0);
+var stagedroprate = Number(0);
+var gainslowstage = Number(0);
+var drophighstage = Number(0);
+var gainshighstage = Number(0);
+var gainsofflinelowstage = Number(0);
+var gainsofflinehighstage = Number(0);
+hrminutes = inputhours * 60
+totalmin = hrminutes+inputminutes;
+totalcleartime = inputcleartime + 5;
+clearsperminute = 60 / totalcleartime;
+clearsperminuteoffline = 2.14285714285714;
+droplowstage = 235 / 10000;
+stagedroprate = inputstagedrop / 100;
+gainslowstage = ((totalmin * clearsperminute) * (droplowstage * stagedroprate)).toFixed(3);
+drophighstage = (26 / 1000);
+gainshighstage = ((totalmin * clearsperminute) * (drophighstage * stagedroprate)).toFixed(3);
+gainsofflinelowstage = ((totalmin * clearsperminuteoffline) * (drophighstage * stagedroprate)).toFixed(3);
+gainsofflinehighstage = ((totalmin * clearsperminuteoffline) * (droplowstage * stagedroprate)).toFixed(3);
+var onlinegains_txt = "Your approx. Stage 2-50 - 14-50 online Bonanza Chest gains are " + gainslowstage;
+var onlinegains2_txt = "Your approx.  Stage 15-25 - 44-50 online Bonanza Chest gains are " + gainshighstage;
+var offlinegains_txt = "Your approx. Stage 2-50 - 14-50 offline Bonanza Chest gains are " + gainsofflinelowstage;
+var offlinegains2_txt = "Your approx. Stage 15-25 - 44-50 offline Bonanza Chest gains are " + gainsofflinehighstage;
+document.getElementById('calculationresult').innerHTML = 
+"<img src=Bonanzachest.png><br>" +
+onlinegains_txt 
++ "<br>" + 
+onlinegains2_txt 
++ "<br><br>" + 
+offlinegains_txt 
++ "<br>" + 
+offlinegains2_txt; 
+}
+</script>
+</head>
+<body>
+
+<title>
+Stage Drop calculator
+</title>
+
+<header>
+<b>
+Stage Drop calculator
+</b>
+</header>
+<form name="online_calc">
+	<br>
+    <label>Hours:</label>
+	<br>
+    <input type="text" name="inputhours">
+	<br>
+	<br>
+    <label>Minutes:</label>
+	<br>
+    <input type="text" name="inputminutes">
+	<br>
+	<br>
+    <label>Cleartime</label>
+	<br>
+    <label>(please only put pure stage clear time in here, do not count transition time!):</label>
+	<br>
+    <input type="text" name="inputcleartime">
+    <br>
+	<br>
+	<label>Stage Drop %</label>
+	<br>
+    <label>(you can find this in your character's stats window):</label>
+    <br>
+	<input type="text" name="inputstagedrop">
+	<br>
+	<br>
+    <input type="button" value="Calculate" onclick="get_online(this.form)">
+</form>
+
+<br>
+<br>
+<b>
+<div id="calculationresult">
+</div>
+</b>
+<footer>
+<br><br>Please note, Stage 25-25 has lower Accessory Chest drop chances than other stages and is thus not recommended to be farmed until Mobirix fixes this
+</footer>
+</body>
+</html>
