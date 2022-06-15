@@ -76,8 +76,6 @@ Stage Drop calculator
 <div id="calculationresult">
 </div>
 </b>
-<footer>
 <br><br>Please note, Stage 25-25 has lower Accessory Chest drop chances than other stages and is thus not recommended to be farmed until Mobirix fixes this
-</footer>
 </body>
 </html>
