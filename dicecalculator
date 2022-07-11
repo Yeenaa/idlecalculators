@@ -1,0 +1,108 @@
+<html>
+<head>
+<script type="text/javascript">
+function get_online(form) {
+var inputdice = Number(form.inputdice.value);
+var gearopt = Number(0);
+var accopt = Number(0);
+var egoopt = Number(0);
+var figureopt = Number(0);
+var petopt = Number(0);
+var mythicalrolls = Number(0);
+var godrolls = Number(0);
+var gearmythicaldice = Number(0);
+var geargoddice = Number(0);
+var accmythicaldice = Number(0);
+var accgoddice = Number(0);
+var egomythicaldice = Number(0);
+var egogoddice = Number(0);
+var figuremythicaldice = Number(0);
+var figuregoddice = Number(0);
+var petmythicaldice = Number(0);
+var petgoddice = Number(0);
+gearopt = 9;
+accopt = 10;
+egoopt = 10;
+figureopt = 10;
+petopt = 8;
+mythicalrolls = 67;
+godrolls = 200
+gearmythicaldice = inputdice * gearopt * mythicalrolls;
+geargoddice = inputdice * gearopt * godrolls;
+accmythicaldice = inputdice * accopt * mythicalrolls;
+accgoddice = inputdice * accopt * godrolls;
+egomythicaldice = inputdice * egoopt * mythicalrolls;
+egogoddice = inputdice * egoopt * godrolls;
+figuremythicaldice = inputdice * figureopt * mythicalrolls;
+figuregoddice = inputdice * figureopt * godrolls;
+petmythicaldice = inputdice * petopt * mythicalrolls;
+petgoddice = inputdice * petopt * godrolls;
+var dicecost_txt = "Your approx. Option Enhance Stone (Dice) costs are as follows:";
+var gearmythicaldice_txt = "Gear - Mythical option: " + gearmythicaldice;
+var geargoddice_txt = "Gear - God option: " + geargoddice;
+var accmythicaldice_txt = "Accessories - Mythical option: " + accmythicaldice;
+var accgoddice_txt = "Accessories - God option: " + accgoddice;
+var egomythicaldice_txt = "Ego - Mythical option: " + egomythicaldice;
+var egogoddice_txt = "Ego - God option: " + egogoddice;
+var figuremythicaldice_txt = "Figure - Mythical option: " + figuremythicaldice;
+var figuregoddice_txt = "Figure - God option: " + figuregoddice;
+var petmythicaldice_txt = "Pet - Mythical option: " + petmythicaldice;
+var petgoddice_txt = "Pet - God option: " + petgoddice;
+document.getElementById('calculationresult').innerHTML = 
+"<br>" +
+dicecost_txt 
++ "<br>" + 
+gearmythicaldice_txt 
++ "<br><br>" + 
+geargoddice_txt 
++ "<br>" + 
+accmythicaldice_txt 
++ "<br>" + 
+accgoddice_txt 
++ "<br>" + 
+egomythicaldice_txt 
++ "<br>" + 
+egogoddice_txt 
++ "<br>" + 
+figuremythicaldice_txt 
++ "<br>" + 
+figuregoddice_txt 
++ "<br>" + 
+petmythicaldice_txt 
++ "<br>" + 
+petgoddice_txt; 
+}
+</script>
+</head>
+<body>
+
+<title>
+Dice cost calculator
+</title>
+
+<header>
+<b>
+Dice cost calculator
+</b>
+</header>
+<form name="online_calc">
+	<br>
+    <label>Dice cost per roll:</label>
+	<br>
+    <input type="text" name="inputdice">
+	<br>
+	<br>
+    <input type="button" value="Calculate" onclick="get_online(this.form)">
+</form>
+
+<br>
+<br>
+<b>
+<div id="calculationresult">
+</div>
+</b>
+<footer>
+<br><br>Please note, these are approximate, average values. You may experience deviation from these. 
+</footer>
+</body>
+</html>
